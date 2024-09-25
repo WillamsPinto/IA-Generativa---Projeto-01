@@ -9,17 +9,11 @@ class ChatAssistant:
         # Executa o pré-treino e armazena as mensagens enviadas no pré-treino
         print("Iniciando o Pré-treino...")
 
-        self.chat_model.send_message("Você irá realizar classificações da Qualidade da Casca de Ovos de Galinha a Partir de Imagens de Ovoscopia. Então, você sempre deve receber Imagens com 15 ovos.")
+        self.chat_model.send_message("Classifique visualmente a qualidade de 15 ovos de galinha em uma imagem de ovoscopia. Avalie a condição da casca, identificando defeitos como rachaduras, manchas ou deformações, e atribua uma nota de 1 a 4 para cada ovo, onde 1 representa a melhor qualidade e 4 a pior. Sempre retorne a classificação no formato de uma grade 5x3.")
         self.chat_model.send_message("Caso o usuário não lhe forneça uma imagem, você deve solicitar")
-        self.chat_model.send_message("A saída deve ser uma classificação de 1 à 4, onde o 1 é o melhor e o 4 é o pior. Além disso, a saída deve ser sempre no formato de uma grade de 5x3, como por exemplo:\n1 1 1 1 1\n1 1 1 4 1\n1 2 2 2 1")
-        self.chat_model.send_message("A ordem de classificação seria a seguinte:\n1: Ovos perfeitos\n2:Ovos com riscos de caneta\n3:Ovos Sujos\n4:Ovos quebrados ou trincados")
 
-        self.chat_model.send_message("Uma classificação com todos os ovos perfeitos:\nclassificação: 1 1 1 1\n1 1 1 1 1\n1 1 1 1 1")
-        self.chat_model.send_message("Uma classificação com ovos riscados de caneta e ovos sujos:\nclassificação: 2 2 3 2 2\n1 2 3 3 2\n1 2 1 2 1")
-        self.chat_model.send_message("Uma classificação com ovos trincados e ovos perfeitos:\nclassificação: 4 1 1 1 4\n1 1 1 4 1\n1 1 1 1 1")
+        #self.chat_model.send_message("A ordem de classificação seria a seguinte:\n1: Ovos perfeitos\n2:Ovos com riscos de caneta\n3:Ovos Sujos\n4:Ovos quebrados ou trincados")
 
-        #disposicao = PIL.Image.open('Imagens/disposicaoOvos.png')
-        #self.chat_model.send_message(["Utilize esta imagem como base para saber a disposição dos ovos na imagem da ovoscopia.", disposicao])
         self.chat_model.send_message("A leitura da imagem deve ser de cima para baixo, da esquerda para direita.\nSegue a ordem de leitura no formato 5x3:\n1º 4º 7º 10º 13º\n2º 5º 8º 11º 14º\n3º 6º 9º 12º 15º")
 
         imagem_exemplo1 = PIL.Image.open('Imagens/0 dias/IMG_0069-3.jpg')
@@ -51,17 +45,6 @@ class ChatAssistant:
 
         imagem_exemplo10 = PIL.Image.open('Imagens/0 dias/IMG_0073-7.jpg')
         self.chat_model.send_message(["Classificação:\n1 1 1 1 1\n2 1 2 2 2\n1 2 2 2 2", imagem_exemplo4])
-
-        self.chat_model.send_message(["Classifique esta imagem", imagem_exemplo1])
-        self.chat_model.send_message(["Classifique esta imagem", imagem_exemplo2])
-        self.chat_model.send_message(["Classifique esta imagem", imagem_exemplo3])
-        self.chat_model.send_message(["Classifique esta imagem", imagem_exemplo4])
-        self.chat_model.send_message(["Classifique esta imagem", imagem_exemplo5])
-        self.chat_model.send_message(["Classifique esta imagem", imagem_exemplo6])
-        self.chat_model.send_message(["Classifique esta imagem", imagem_exemplo7])
-        self.chat_model.send_message(["Classifique esta imagem", imagem_exemplo8])
-        self.chat_model.send_message(["Classifique esta imagem", imagem_exemplo9])
-        self.chat_model.send_message(["Classifique esta imagem", imagem_exemplo10])
 
         print("Pré-treino realizado com sucesso!")
 
